@@ -4,18 +4,37 @@
     <title>CTD Pre-Work: Art Explorer</title>
     <body>
         <button onclick="randomButtonAction()">Random Art</button>
+        <button id="art-finder-btn" onclick="artFinderButtonAction()">Art Finder</button>
         <button>Ancient Classical Art</button>
         <button>Medieval Art</button>
         <button>Renaissance</button>
         <button>Modern</button>
 
-        <div id="image-box">
-            <h3 id="art-title"></h3>
-            <p id="art-description"></p>
-            <img id="art-img" src="">
-            <br>
-            <h5 id="art-author"></h5>
+        <div id="random-art-div">
+            <div class="random-art-display">
+                <br>
+                <h3></h3>
+                <p></p>
+                <img src="">
+                <br>
+                <h5></h5>
+            </div>
+        </div>
 
+        <div id="art-finder-div" style="display:none">
+            <br>
+            <input type="text" id="search-field" placeholder="Search for Art!">
+            <button id="search-button" onclick="searchArtButtonAction()">Search</button>
+            <br>
+            
+            <div class="art-finder-display">
+                <h3></h3>
+                <p></p>
+                <img src="">
+                <br>
+                <h5></h5>
+            </div>
+            
         </div>
     </body>
     

@@ -1,26 +1,106 @@
+
+// generates random art
 async function randomButtonAction(){
+
+    // display random art div and hide search art div
+    document.getElementById("random-art-div").style.display = "block";
+    document.getElementById("art-finder-div").style.display = "none";
+
     const randomArt = await getRandomArt();
 
-    document.getElementById("art-img").setAttribute("src",randomArt.image_url);
-    document.getElementById("art-title").textContent = randomArt.title;
-    document.getElementById("art-description").innerHTML = randomArt.description;
+    document.getElementsByClassName("random-art-display")[0].getElementsByTagName("h3")[0].textContent = randomArt.title;
+    document.getElementsByClassName("random-art-display")[0].getElementsByTagName("p")[0].innerHTML = randomArt.description;
+    document.getElementsByClassName("random-art-display")[0].getElementsByTagName("img")[0].setAttribute("src",randomArt.image_url);
 
 }
 
+// fetches random Art and it's info via API
 async function getRandomArt(){
     
-    // get random art
-    let art = {};
-    let randNum = Math.floor(Math.random() * randomArtIds.length);
-    let response = await fetch(`https://api.artic.edu/api/v1/artworks/${randomArtIds[randNum]}?fields=id,title,image_id,description`);
+    // pick a random art ID from pre-selected art
+    const randNum = Math.floor(Math.random() * randomArtIds.length);
+    const id = randomArtIds[randNum];
+    const art = getArtById(id);
+    return art;
+}
+
+// hides random art and displays search button + div
+function artFinderButtonAction(){
+
+    document.getElementById("random-art-div").style.display = "none"; 
+    document.getElementById("art-finder-div").style.display = "block"; 
+
+}
+
+
+async function searchArtButtonAction(){
+
+    // hide random art div + display art-finder div
+
+    document.getElementById("random-art-div").style.display = "none";
+    document.getElementById("art-finder-div").style.display = "block";
+
+    // get text from text field
+    let inputText = document.getElementById("search-field").value;
+
+    // parse text, display error if incorrect or missing
+    if(inputText.length < 1){
+        return
+    }
+
+
+    // api call via search
+    const request = `https://api.artic.edu/api/v1/artworks/search?q=${inputText}`;
+    const response = await fetch(request);
+    const json = await response.json();
+    console.log(json.data);
+
+    // display art if result was found, else display warning message
+    if(json.data[0]){
+        // fetch art info/img
+        let id = json.data[0].id;
+        let artData = await getArtById(id);
+    
+        // display art
+        document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("h3")[0].textContent = artData.title;
+        document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("p")[0].innerHTML = artData.description;
+        document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("img")[0].setAttribute("src",artData.image_url);
+        document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("img")[0].style.display = "block";
+
+    }
+    else{
+        // display warning and hide art
+        console.log("json is empty!")
+        document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("h3")[0].textContent = "Art not found - try a better query!";
+        document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("p")[0].innerHTML = "";
+        document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("img")[0].style.display = "none";
+        return;
+    }
+    
+
+
+}
+
+// returns Art Image URL, Description, and Title
+/**
+ * 
+ * @param {Number} id - ID of the art as used by ARTIC
+ * @returns {Object} art - contains art data
+ */
+async function getArtById(id){
+
+    let response = await fetch(`https://api.artic.edu/api/v1/artworks/${id}?fields=id,title,image_id,description`);
     const json = await response.json();
 
-    // get art info and image url
+    // get art info
+    let art = {};
     art.title = json.data.title;
     art.description = json.data.description;
     art.image_url = `${json.config.iiif_url}/${json.data.image_id}/full/843,/0/default.jpg`; 
     return art;
+
 }
+
 
 async function getListOfArt(){
     let artList = [];
@@ -59,4 +139,4 @@ const randomArtIds = [
     49928, 44240, 13454, 16797,54467,15542 ]
 
     // Start the page with a random art! 
-randomButtonAction()
+//randomButtonAction()
