@@ -1,10 +1,6 @@
 
 // generates random art
-async function randomButtonAction(){
-
-    // display random art div and hide search art div
-    document.getElementById("random-art-div").style.display = "block";
-    document.getElementById("art-finder-div").style.display = "none";
+async function randomArtButtonAction(){
 
     const randomArt = await getRandomArt();
 
@@ -14,7 +10,14 @@ async function randomButtonAction(){
 
 }
 
-// fetches random Art and it's info via API
+// shows the random art button and display
+function displayRandomArtBlock(){
+    // display random art div and hide search art div
+    document.getElementById("random-art-div").style.display = "block";
+    document.getElementById("art-finder-div").style.display = "none";
+}
+
+// fetches random art and it's info via API
 async function getRandomArt(){
     
     // pick a random art ID from pre-selected art
@@ -25,7 +28,7 @@ async function getRandomArt(){
 }
 
 // hides random art and displays search button + div
-function artFinderButtonAction(){
+function displayArtFinderBlock(){
 
     document.getElementById("random-art-div").style.display = "none"; 
     document.getElementById("art-finder-div").style.display = "block"; 
@@ -74,10 +77,7 @@ async function searchArtButtonAction(){
         document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("h3")[0].textContent = "Art not found - try a better query!";
         document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("p")[0].innerHTML = "";
         document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("img")[0].style.display = "none";
-        return;
     }
-    
-
 
 }
 

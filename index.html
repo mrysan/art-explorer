@@ -3,14 +3,11 @@
     <script src="script.js"></script>
     <title>CTD Pre-Work: Art Explorer</title>
     <body>
-        <button onclick="randomButtonAction()">Random Art</button>
-        <button id="art-finder-btn" onclick="artFinderButtonAction()">Art Finder</button>
-        <button>Ancient Classical Art</button>
-        <button>Medieval Art</button>
-        <button>Renaissance</button>
-        <button>Modern</button>
+        <button onclick="displayRandomArtBlock()">Random Art</button>
+        <button id="art-finder-btn" onclick="displayArtFinderBlock()">Art Finder</button>
 
         <div id="random-art-div">
+            <button id="random-art-btn" onclick="randomArtButtonAction()">Show Me Random Art!</button>
             <div class="random-art-display">
                 <br>
                 <h3></h3>
@@ -23,7 +20,7 @@
 
         <div id="art-finder-div" style="display:none">
             <br>
-            <input type="text" id="search-field" placeholder="Search for Art!">
+            <input type="text" id="search-field" placeholder="Search by artist, name, or keyword!" required>
             <button id="search-button" onclick="searchArtButtonAction()">Search</button>
             <br>
             
