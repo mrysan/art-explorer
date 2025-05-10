@@ -1,5 +1,5 @@
 
-// generates random art
+// Fetches random art via API and displays it
 async function randomArtButtonAction(){
 
     const randomArt = await getRandomArt();
@@ -10,10 +10,10 @@ async function randomArtButtonAction(){
 
 }
 
-// shows the random art button and display
+// shows the random art button and random art
 function displayRandomArtBlock(){
     // display random art div and hide search art div
-    document.getElementById("random-art-div").style.display = "block";
+    document.getElementById("random-art-div").style.display = "inline";
     document.getElementById("art-finder-div").style.display = "none";
 }
 
@@ -31,24 +31,25 @@ async function getRandomArt(){
 function displayArtFinderBlock(){
 
     document.getElementById("random-art-div").style.display = "none"; 
-    document.getElementById("art-finder-div").style.display = "block"; 
+    document.getElementById("art-finder-div").style.display = "inline-block";
 
 }
 
-
+// Searches for art using input text, and either displays result or error message if none found
 async function searchArtButtonAction(){
-
     // hide random art div + display art-finder div
-
     document.getElementById("random-art-div").style.display = "none";
-    document.getElementById("art-finder-div").style.display = "block";
+    document.getElementById("art-finder-div").style.display = "inline-block";
 
     // get text from text field
     let inputText = document.getElementById("search-field").value;
 
     // parse text, display error if incorrect or missing
     if(inputText.length < 1){
-        return
+        document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("h3")[0].textContent = "Please enter a search term";
+        document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("p")[0].innerHTML = "";
+        document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("img")[0].style.display = "none";
+        return;
     }
 
 
@@ -68,13 +69,12 @@ async function searchArtButtonAction(){
         document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("h3")[0].textContent = artData.title;
         document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("p")[0].innerHTML = artData.description;
         document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("img")[0].setAttribute("src",artData.image_url);
-        document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("img")[0].style.display = "block";
+        document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("img")[0].style.display = "inline";
 
     }
     else{
         // display warning and hide art
-        console.log("json is empty!")
-        document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("h3")[0].textContent = "Art not found - try a better query!";
+        document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("h3")[0].textContent = "No artwork found for that search";
         document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("p")[0].innerHTML = "";
         document.getElementsByClassName("art-finder-display")[0].getElementsByTagName("img")[0].style.display = "none";
     }
@@ -139,4 +139,4 @@ const randomArtIds = [
     49928, 44240, 13454, 16797,54467,15542 ]
 
     // Start the page with a random art! 
-//randomButtonAction()
+    //randomArtButtonAction()

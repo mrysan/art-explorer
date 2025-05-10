@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+
     <title>CTD Pre-Work: Art Explorer</title>
+
     <body>
-        <button onclick="displayRandomArtBlock()">Random Art</button>
-        <button id="art-finder-btn" onclick="displayArtFinderBlock()">Art Finder</button>
+        <div class="container">
 
-        <div id="random-art-div">
-            <button id="random-art-btn" onclick="randomArtButtonAction()">Show Me Random Art!</button>
-            <div class="random-art-display">
-                <br>
-                <h3></h3>
-                <p></p>
-                <img src="">
-                <br>
-                <h5></h5>
-            </div>
-        </div>
-
-        <div id="art-finder-div" style="display:none">
-            <br>
-            <input type="text" id="search-field" placeholder="Search by artist, name, or keyword!" required>
-            <button id="search-button" onclick="searchArtButtonAction()">Search</button>
-            <br>
-            
-            <div class="art-finder-display">
-                <h3></h3>
-                <p></p>
-                <img src="">
-                <br>
-                <h5></h5>
+            <!-- Menu -->
+            <div class="menu">
+                <button class="button-select" onclick="displayRandomArtBlock()">Random Art</button>
+                <button class="button-select" id="art-finder-btn" onclick="displayArtFinderBlock()">Art Finder</button>
             </div>
             
-        </div>
+            <!-- Random Art Block -->
+            <div id="random-art-div">
+                <div class="random-art-display">
+                    <button class="button-select" id="random-art-btn" onclick="randomArtButtonAction()">Surprise Me With Art</button>
+                    <h3></h3>
+                    <p></p>
+                    <img src="">
+                </div>
+            </div>
+
+            <!-- Art Finder Block -->
+            <div id="art-finder-div" style="display:none">
+ 
+                <div class="art-finder-display">
+                    <input type="text" id="search-field" placeholder="Try Searching: Mona Lisa, Picasso, cat" required>
+                    <button class="button-select" id="search-button" onclick="searchArtButtonAction()">Search</button>
+                    <h3></h3>
+                    <p></p>
+                    <img src="">
+                </div>
+            </div>
+
+        </div> 
     </body>
-    
+
 </html>

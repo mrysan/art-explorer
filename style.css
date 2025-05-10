@@ -1,0 +1,114 @@
+html{
+    background-color: #F3F3E0;
+}
+
+input{
+    width: 350px;
+    height: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: solid 1px;
+    font-size: 12px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+p{
+    max-width: 600px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h3{
+    max-width: 600px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.menu{
+    background-color: #DDA853;
+    padding-top: 25px;
+    padding-bottom:25px;
+    width: 600px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.random-art-display{
+    display: flex;
+flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.art-finder-display{
+    display: flex;
+flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.random-art-div{
+   
+    display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding:auto;
+  text-align: center;
+} 
+
+.art-finder-div{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:auto;
+}
+
+
+.button-select{
+    border: solid transparent;
+    border-radius: 16px;
+    color:#FFFDF6;
+    background-color: #27548A;
+    cursor: pointer; /* changes cursor on hovering */
+    font-size: 18px;
+    letter-spacing: .5px; 
+    padding: 10px; /*create space around text*/
+    margin-left: 25px;
+    margin-right: 25px;
+    /* margin-bottom: 25px; */
+    box-shadow: 0 5px #999;
+    
+
+}
+
+/* Animates a "click" action */
+.button-select:active{
+    box-shadow: 0 0px #666;
+    transform: translateY(4px);
+
+}
+
+.random-art-display{
+    margin-top: 0px;
+}
+
+.art-finder-display{
+    margin-top:0px;
+}
+
+#random-art-btn{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#search-button{
+    margin-bottom: 30px;
+}
+
