@@ -101,7 +101,7 @@ async function getArtById(id){
 
 }
 
-
+// function to gather a list of random art that contains a description, name and image. Used to pre-populate the random art list
 async function getListOfArt(){
     let artList = [];
     let count = 0;
@@ -137,6 +137,3 @@ const randomArtIds = [
      58785,  4433,  8969, 48844,
     57791, 25983, 51195, 44059,
     49928, 44240, 13454, 16797,54467,15542 ]
-
-    // Start the page with a random art! 
-    //randomArtButtonAction()
