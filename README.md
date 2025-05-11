@@ -29,13 +29,19 @@ cd art-explorer
 This is a static website, so no installation is needed to run
 
 ### On Mac:
+```bash
 open index.html
+```
 
 ### On Windows (Command Prompt or PowerShell):
+```bash
 start index.html
+```
 
 ### On Windows (Git Bash or WSL):
+```bash
 explorer.exe index.html
+```
 
 Alternatively, you can open index.html manually by double-clicking it or using your browser’s “File > Open File” option.
 
