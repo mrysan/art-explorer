@@ -46,7 +46,7 @@ You can switch between the two views at any time using the top buttons.
 
 ### Random Art
 - Click **"Random Art"** to switch to the Random Art view.
-- Click **"Surprise Me with Random Art"** to view a randomly selected artwork.
+- Click **"Surprise Me with Art"** to view a randomly selected artwork.
 - The artwork's title, description, and image will be displayed.
 
 ### Art Finder 
